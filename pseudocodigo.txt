@@ -1,0 +1,11 @@
+Dados: N = 5 filósofos, Garfos 0..N-1
+Para cada filósofo p:
+    garfo1 = min(esquerda(p), direita(p))
+    garfo2 = max(esquerda(p), direita(p))
+Loop:
+    pensar()
+    adquirir(garfo1) // Pega o menor índice primeiro
+    adquirir(garfo2) // Pega o maior índice depois
+    comer()
+    liberar(garfo2)
+    liberar(garfo1)
