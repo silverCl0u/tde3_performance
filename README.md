@@ -11,7 +11,7 @@
 ---
 
 ## 🎥 Apresentação em Vídeo
-**Link para o vídeo explicativo:** []
+**Link para o vídeo explicativo:** [https://youtu.be/lAwN5-_cBMo]
 
 ---
 
@@ -95,5 +95,6 @@ No arquivo `DeadlockFixed.java`, aplicamos a solução por **Ordenação de Recu
 * Isso elimina a possibilidade de Espera Circular, permitindo que o programa execute até o fim com sucesso.
 
 ---
+
 
 
