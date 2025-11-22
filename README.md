@@ -26,6 +26,39 @@ Para resolver o problema e evitar o Deadlock, utilizamos a estratégia de **Hier
 * **Lógica:** Numeramos os garfos de 0 a 4. A regra imposta é que todo filósofo deve, obrigatoriamente, tentar pegar primeiro o garfo de **menor índice** e depois o de **maior índice**.
 * **Por que funciona?** Isso quebra a condição de "Espera Circular" (uma das 4 condições de Coffman). Matematicamente, impede que o ciclo de dependência se feche, garantindo que pelo menos um filósofo consiga comer e liberar os recursos.
 
+### Pseudocódigo / Lógica do Protocolo
+Abaixo está a lógica implementada para garantir que não exista espera circular:
+
+
+DADOS:
+    N = 5 (número de filósofos)
+    Garfos = Array indexado de 0 a 4
+
+PARA CADA FILÓSOFO (p):
+    1. Identificar garfos vizinhos:
+       - garfo_esq = p
+       - garfo_dir = (p + 1) % N
+
+    2. Definir ordem de aquisição (A REGRA DE OURO):
+       - primeiro_garfo = min(garfo_esq, garfo_dir)  (O de menor índice)
+       - segundo_garfo  = max(garfo_esq, garfo_dir)  (O de maior índice)
+
+    3. Loop Principal:
+       REPITA:
+           PENSAR()
+           estado[p] <- "COM FOME"
+           
+           ADQUIRIR(primeiro_garfo)  // Bloqueia se ocupado
+           ADQUIRIR(segundo_garfo)   // Bloqueia se ocupado
+           
+           estado[p] <- "COMENDO"
+           COMER()
+           
+           LIBERAR(segundo_garfo)
+           LIBERAR(primeiro_garfo)
+           
+           estado[p] <- "PENSANDO"
+
 ---
 
 ## 🚦 Parte 2: Threads e Semáforos (Condição de Corrida)
@@ -63,12 +96,7 @@ No arquivo `DeadlockFixed.java`, aplicamos a solução por **Ordenação de Recu
 
 ---
 
-## 🛠️ Como Executar
-Certifique-se de ter o JDK instalado. No terminal, navegue até a pasta do arquivo e execute:
-
-```bash
-# Compilar
-javac NomeDoArquivo.java
 
 # Rodar
+
 java NomeDoArquivo
