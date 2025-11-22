@@ -26,7 +26,7 @@ Para resolver o problema e evitar o Deadlock, utilizamos a estratégia de **Hier
 * **Lógica:** Numeramos os garfos de 0 a 4. A regra imposta é que todo filósofo deve, obrigatoriamente, tentar pegar primeiro o garfo de **menor índice** e depois o de **maior índice**.
 * **Por que funciona?** Isso quebra a condição de "Espera Circular" (uma das 4 condições de Coffman). Matematicamente, impede que o ciclo de dependência se feche, garantindo que pelo menos um filósofo consiga comer e liberar os recursos.
 
-### Pseudocódigo / Lógica do Protocolo
+### Pseudocódigo / 
 Abaixo está a lógica implementada para garantir que não exista espera circular:
 
 
@@ -97,6 +97,3 @@ No arquivo `DeadlockFixed.java`, aplicamos a solução por **Ordenação de Recu
 ---
 
 
-# Rodar
-
-java NomeDoArquivo
